@@ -27,11 +27,15 @@ namespace Imagine
         public MainPage()
         {
             InitializeComponent();
-            lstoptions.SelectedItem = null;
             pct.Completed += image_Completed;
             cct.Completed += image_Completed;
             // Código de ejemplo para traducir ApplicationBar
             //BuildLocalizedApplicationBar();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            lstoptions.SelectedItem = null;
         }
 
         void image_Completed(object sender, PhotoResult e)
@@ -40,11 +44,7 @@ namespace Imagine
             {
                 MainPage.source = new StreamImageSource(e.ChosenPhoto);
                 NavigationService.Navigate(new Uri("/View/Scan.xaml", UriKind.Relative));
-                //bmp = new BitmapImage();
-                //bmp.SetSource(e.ChosenPhoto);
-                //source = new StreamImageSource(e.ChosenPhoto);
-                //effect = new FilterEffect(source);
-                
+
             }
         }
 
