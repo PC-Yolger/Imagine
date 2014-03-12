@@ -17,18 +17,10 @@ namespace Imagine
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        PhotoChooserTask pct = new PhotoChooserTask();
-        CameraCaptureTask cct = new CameraCaptureTask();
-
-        public static string url;
-        public static StreamImageSource source;
-
         // Constructor
         public MainPage()
         {
             InitializeComponent();
-            pct.Completed += image_Completed;
-            cct.Completed += image_Completed;
             // Código de ejemplo para traducir ApplicationBar
             //BuildLocalizedApplicationBar();
         }
@@ -38,32 +30,13 @@ namespace Imagine
             lstoptions.SelectedItem = null;
         }
 
-        void image_Completed(object sender, PhotoResult e)
-        {
-            if (e.TaskResult == TaskResult.OK)
-            {
-                MainPage.source = new StreamImageSource(e.ChosenPhoto);
-                NavigationService.Navigate(new Uri("/View/Scan.xaml", UriKind.Relative));
-
-            }
-        }
-
-        private void lstoptions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lstoption_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lstoptions.SelectedItem != null)
             {
-                switch (lstoptions.SelectedIndex)
-                {
-                    case 0:
-                        pct.Show();
-                        break;
-                    case 1:
-                        cct.Show();
-                        break;
-                    default:
-                        break;
-                }
+                NavigationService.Navigate(new Uri("/View/Scan.xaml?option=" + lstoptions.SelectedIndex, UriKind.Relative));
             }
+
         }
 
         // Código de ejemplo para compilar una ApplicationBar traducida

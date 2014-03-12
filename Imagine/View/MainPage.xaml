@@ -16,7 +16,7 @@
     <phone:Panorama Title="CICLOP">
         <phone:PanoramaItem Header="main">
             <ListBox x:Name="lstoptions"
-                     SelectionChanged="lstoptions_SelectionChanged">
+                     SelectionChanged="lstoption_SelectionChanged">
                 <TextBlock Text="Library"
                            Style="{StaticResource PanoramaItemHeaderTextStyle}"
                            FontSize="45"/>

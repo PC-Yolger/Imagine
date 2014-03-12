@@ -22,19 +22,30 @@
     </phone:PhoneApplicationPage.ApplicationBar>
 
     <!--LayoutRoot es la cuadrícula raíz donde se coloca todo el contenido de la página-->
-    <Grid x:Name="grid"
-          Margin="12,0,12,0">
-        <Image x:Name="image"/>
-        <Canvas Background="Transparent"
-                ManipulationStarted="Event_ManipulationStarted" 
-                ManipulationDelta="Event_ManipulationDelta">
-            <Border x:Name="photo"
-                    Background="{StaticResource PhoneAccentBrush}"
-                    Opacity="0.3">
-                <Border.RenderTransform>
-                    <CompositeTransform x:Name="transform"/>
-                </Border.RenderTransform>
-            </Border>
-        </Canvas>
+    <Grid Margin="20,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource PanoramaItemHeaderTextStyle}"
+                   Text="SELECT"/>
+        <Viewbox Stretch="Uniform"
+                 Grid.Row="1"
+                 x:Name="viewbox">
+            <Grid x:Name="grid">
+                <Image x:Name="image"/>
+                <Canvas Background="Transparent"
+                        ManipulationStarted="InteractionCanvas_ManipulationStarted" 
+                        ManipulationDelta="InterationCanvas_manipulationDelta">
+                    <Border x:Name="brdCrop"
+                            Canvas.Left="0"
+                            Canvas.Top="0"
+                            Width="0"
+                            Height="0"
+                            Background="{StaticResource PhoneAccentBrush}"
+                            Opacity="0.3"/>
+                </Canvas>
+            </Grid>
+        </Viewbox>
     </Grid>
 </phone:PhoneApplicationPage>
