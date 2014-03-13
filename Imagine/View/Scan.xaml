@@ -23,19 +23,13 @@
 
     <!--LayoutRoot es la cuadrícula raíz donde se coloca todo el contenido de la página-->
     <Grid Margin="20,0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Style="{StaticResource PanoramaItemHeaderTextStyle}"
-                   Text="SELECT"/>
         <Viewbox Stretch="Uniform"
                  Grid.Row="1"
                  x:Name="viewbox">
             <Grid x:Name="grid">
                 <Image x:Name="image"/>
                 <Canvas Background="Transparent"
-                        ManipulationStarted="InteractionCanvas_ManipulationStarted" 
+                        ManipulationStarted="InteractionCanvas_ManipulationStarted"
                         ManipulationDelta="InterationCanvas_manipulationDelta">
                     <Border x:Name="brdCrop"
                             Canvas.Left="0"
